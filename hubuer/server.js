@@ -12,11 +12,8 @@ var morgan = require('morgan');
 var config = require('./config');//读取配置文件config.js信息
 
 //导入路由文件category.js
-var categoryRouter = require('./app/routes/category');
 var UserRouter  = require('./app/routes/users');
-var LoginRouter  = require('./app/routes/login');
-var BlogRouter  = require('./app/routes/blog');
-var CommnetRouter  = require('./app/routes/comment');
+var CatRouter  = require('./app/routes/cats');
 
 //配置================================
 
@@ -33,12 +30,8 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 //外部路由设置
-app.use('/category',categoryRouter);
 app.use('/users',UserRouter);
-app.use('/login',LoginRouter);
-app.use('/blog',BlogRouter);
-app.use('/comment',CommnetRouter);
-
+app.use('/cats',CatRouter);
 
 app.listen(port);
 console.log('正常启动了~');
