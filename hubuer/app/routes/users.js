@@ -22,10 +22,12 @@ router.post('/register',function(req,res){
 	        res.json({"status":'1',msg:'用户名已存在'})
 	      }else{
 	      	var admin= new User({
-			      name:param.name,
-			      password:param.password,
-			      phone:param.phone,
-			      admin:true
+	      	  "name": param.name,
+			  "password": param.password,
+			  "phone":param.phone,
+			  "orderList":[],
+			  "cartList":[],
+			  "userInfo":[]
 	      	})
 	      	console.log(admin.password.length)
 	      	if(admin.password.length < 6 ||admin.password.length >20){

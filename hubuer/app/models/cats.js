@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 
 //使用module.exports导出
 module.exports = mongoose.model('Cats',new Schema({
-    cat_i:String,
+    cat_id:String,
     cat_name: String,
     cat_desc: String,
     icon: String,
