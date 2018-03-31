@@ -4,9 +4,65 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>market</title>
+    <style type="text/css">
+    	*{
+    		margin:0;
+    		padding:0;
+    	}
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    
+    		<figure>
+					<img src="build/logo.png" alt=""/>
+					<figcaption>这是一只狗</figcaption>
+				</figure>
+				
+				<progress id="a" value="30" max="100">30%</progress>
+				<br/>
+				<input id="input" type="text" placeholder="请输入您所需要的进度"/>
+				<button id="btn">确定</button>
+    <script type="text/javascript">
+    	var btn = document.getElementsByTagName("button")
+    	var progress = document.getElementById("a");
+    	var enter = progress.innerHTML;
+    	var input = document.getElementById("input");
+    	var inputValue = input.value;
+    	console.log(btn)
+    	console.log(value)
+    	console.log(enter)
+			console.log(inputValue)    	
+    	
+    	
+    	
+    		var tmp = new Date();
+//				console.log(tmp);
+				function f() {
+				  console.log(tmp);
+					if (true) {
+				    var tmp = 'hello world';
+				    console.log("if函数执行了")
+				  }
+				}
+//				f(); 
+				
+				function* fibs() {
+				  let a = 0;
+				  let b = 1;
+				  while (true) {
+				    yield a;
+				    [a, b] = [b, a + b];
+				  }
+				}
+				
+				let [first, second, third, fourth, fifth, sixth] = fibs();
+//				console.log(sixth) // 5
+//				console.log([first, second, third, fourth, fifth, sixth]) //=>(6) [0, 1, 1, 2, 3, 5]
+					
+				
+    </script>
+    
   </body>
 </html>

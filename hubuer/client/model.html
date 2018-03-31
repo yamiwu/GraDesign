@@ -7,14 +7,82 @@
        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"> <!-- 移动设备优先 -->
         <title>湖北大学教育超市</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
-
+        <!--兼容IE9以下-->
+        <!--[if lt IE 9]>
+		<script>
+		   (function() {
+		     if (!
+		     /*@cc_on!@*/
+		     0) return;
+		     var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
+		     var i= e.length;
+		     while (i--){
+		         document.createElement(e[i])
+		     }
+		})()
+		</script>
+		<![endif]-->
+        <style>
+        	header{
+        		color: red;
+        		border:2px solid black;
+        		width:100px;
+        		height:100px;
+        		
+        	}
+            #big{
+                width: 100px;
+                height:100px;
+                background: yellow;
+                /* position: relative; */
+            }
+            #box{
+                width: 100px;
+                height:100px;
+                background: black;
+                /* position: relative; */
+            }
+            .box{
+                width: 100px;
+                height:100px;
+                background: pink;
+                position: absolute;
+                left:20px;
+            }
+            .boxx{
+                width: 100px;
+                height:100px;
+                background: blue;
+                /* position: absolute; */
+            }
+        </style>
+		
 	</head>
 	<body>
-       
+	   <header>Hello!mxria.com</header>
+       <div id="big"></div>
+       <div id="box">
+           <div class="box">
+               <!-- <div class="boxx"></div> -->
+           </div>
+       </div>
     </body>
     <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script>
-        
+    	var oBox = document.getElementById('box'); 
+    	var a1=10;
+		var a2=20;
+//		alert('a1+a2='+a1+a2);
+    	var g = 123;
+    	console.log(window.g)
+    	oBox.onclick=function(){
+    		console.log("点击了")
+//  		window.location='a.html';
+//			window.location.href='a.html'
+			document.changeTitle=('我是新标题')
+    	}
+    	
+    	console.log(document.documentElement.clientWidth)
     </script>
 </html>
