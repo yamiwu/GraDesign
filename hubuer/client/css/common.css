@@ -114,7 +114,7 @@ nav .container-nav .Ul{
 	width: 100%;
 	height: 42px;
 	margin: 0 auto;
-	margin: 1% ;
+	
 }
 nav .container-nav .Ul li{
 	float: left;
@@ -286,19 +286,14 @@ section{
 	    line-height: 47px;
 	}
 	
-	/*nav*/
-	.Ul li:nth-child(4),.Ul li:nth-child(5),.Ul li:nth-child(6),.Ul li:nth-child(7){
-	    display: none;
-	    width: 12%;
-	    line-height: 42px;
-	}
+	
 	nav .container-nav .Ul{
 		margin: 1% ;
 	}
 	nav .container-nav .Ul li{
-		width:23% ;
+		width:12% ;
 	}
-	.col-weibo{
+	.footer-up .col-weibo{
 		display: none;
 	}
 	.footer-address{
@@ -311,4 +306,8 @@ section{
 		margin-left:0;
 	}
 }
-
+@media screen and (max-width: 375px){
+	.col-new ul li:nth-child(5) {
+		display: none;
+	}
+}

@@ -19,7 +19,7 @@ var Goods  = require('./app/routes/goods');
 //配置================================
 
 //配置文件  设置端口
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 mongoose.connect(config.database);//连接数据库
 app.set('superSecret', config.secret);
 

@@ -1,5 +1,5 @@
 {
-  "name": "hubuer",
+  "name": "server",
   "version": "1.0.0",
   "description": "功能：\r     1.管理员功能\r         注册管理员\r         登录\r         发布博客\r         修改博客\r         删除博客",
   "main": "config.js",

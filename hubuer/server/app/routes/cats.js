@@ -4,18 +4,39 @@ var router = express.Router();
 var Cats = require('../models/cats');  //分类数据模型
 
 router.get('/',function(req,res){
+//	res.writeHead(200, {
+//      "Content-Type": "text/plain; charset=utf-8",
+//	    "Access-Control-Allow-Origin": "*"
+//  });
     Cats.find({},function(err,result){
         if(err){
-            return res.json({
-                success:false,
-                message:"获取商品分类失败！"
-            })
+        	res.writeHead(200, {
+//	            "Content-Type": "text/plain; charset=utf-8",
+	            "Access-Control-Allow-Origin": "*"
+        	});
+        	res.write('我是错误请求');
+        	res.end();
+//          return res.json({
+//              success:false,
+//              message:"获取商品分类失败！"
+//          });
         }else{
-        	res.json({
-        		success:true,
-        		msg:"获取商品分类成功！",
-        		data:result
-        	})
+        	res.writeHead(200, {
+//	            "Content-Type": "text/plain; charset=utf-8",
+	            "Access-Control-Allow-Origin": "*"
+        	});
+        	res.write(JSON.stringify({
+	        		success:true,
+	        		msg:"获取商品分类成功！",
+	        		data:result
+        		})
+        	)
+//      	res.json({
+//      		success:true,
+//      		msg:"获取商品分类成功！",
+//      		data:result
+//      	});
+			res.end();
         }
     })
 

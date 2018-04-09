@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 module.exports = mongoose.model('goods',new Schema({
 	"cat_id": Number,
 	"cat_name": String,
-	"goods_id": String,
+	"goods_id": Number,
 	"goods_name": String,
 	"goods_desc": String,
 	"goods_price": String,

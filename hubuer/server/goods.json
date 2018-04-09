@@ -1,0 +1,513 @@
+[
+	{
+        "cat_id": 2018001,
+        "cat_name": "零食",
+        "goods_id": "1001003",
+        "goods_name": "火腿肠",
+        "goods_desc": "双汇火腿肠王中王30g支即食零食香肠休闲小吃即食泡面拍档",
+        "goods_price": "1.5",     
+        "good_image": "huotui.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018001,
+        "cat_name": "零食",
+        "goods_id": "1001004",
+        "goods_name": "辣条",
+        "goods_desc": "卫龙辣条麻辣熟食小面筋辣味小吃网红零食品",
+        "goods_price": "3.5",
+        "good_image": "latiao.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018001,
+        "cat_name": "零食",
+        "goods_id": "1001005",
+        "goods_name": "德芙巧克力",
+        "goods_desc": "德芙巧克力礼盒 丝滑牛奶碗装252g新旧包装随机发货装",
+        "goods_price": "29.0",
+        "good_image": "qiaokeli.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018001,
+        "cat_name": "零食",
+        "goods_id": "1001006",
+        "goods_name": "肉脯",
+        "goods_desc": "百草味白芝麻猪肉脯180g 肉类特产休闲网红零食熟食肉干小吃",
+        "goods_price": "15.0",
+        "good_image": "roupu.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018001,
+        "cat_name": "零食",
+        "goods_id": "1001007",
+        "goods_name": "肉松饼",
+        "goods_desc": "正宗友臣肉松饼福建特产小吃早餐糕点面包零食（个）",
+        "goods_price": "1.5",
+        "good_image": "rousongbing.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018001,
+        "cat_name": "零食",
+        "goods_id": "1001008",
+        "goods_name": "乐视薯片",
+        "goods_desc": "乐事原味/黄瓜味/番茄味104g罐休闲零食小吃薯片",
+        "goods_price": "7.5",
+        "good_image": "shupian.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018001,
+        "cat_name": "零食",
+        "goods_id": "1001009",
+        "goods_name": "芒果干",
+        "goods_desc": "百草味芒果干120g 休闲零食芒果片 蜜饯果脯水果干",
+        "goods_price": "9.5",
+        "good_image": "mangguogan.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018001,
+        "cat_name": "零食",
+        "goods_id": "1001010",
+        "goods_name": "腰果",
+        "goods_desc": "百草味 炭烧腰果190g 精挑细选 色泽诱人 焦香酥脆 香醇美味",
+        "goods_price": "20.0",
+        "good_image": "yaoguo.jpg",
+        "goods_num": 1
+    },
+	{
+        "cat_id": 2018005,
+        "cat_name": "饮料",
+        "goods_id": "1005001",
+        "goods_name": "农夫山泉",
+        "goods_desc": "农夫山泉矿泉水550mL",
+        "goods_price": "1.8",
+        "good_image": "nongfu.jpg",
+        "goods_num": 1
+    },
+    
+    {
+        "cat_id": 2018006,
+        "cat_name": "生活",
+        "goods_id": "1006001",
+        "goods_name": "阿道夫洗发露",
+        "goods_desc": "阿道夫洗发露420g",
+        "goods_price": "48.0",
+        "good_image": "adaofu.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018006,
+        "cat_name": "生活",
+        "goods_id": "1006002",
+        "goods_name": "云南白药牙膏",
+        "goods_desc": "云南白药牙膏留兰香型180g 减轻牙龈出血祛除口腔异味",
+        "goods_price": "23.0",
+        "good_image": "yunnanbaiyao.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018006,
+        "cat_name": "生活",
+        "goods_id": "1006003",
+        "goods_name": "维达卫生纸",
+        "goods_desc": "维达卫生纸4层180抽 ",
+        "goods_price": "3.0",
+        "good_image": "weida.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018006,
+        "cat_name": "生活",
+        "goods_id": "1006004",
+        "goods_name": "舒肤佳沐浴露",
+        "goods_desc": "舒肤佳沐浴露720ml ",
+        "goods_price": "25.0",
+        "good_image": "shufujia.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018006,
+        "cat_name": "生活",
+        "goods_id": "1006005",
+        "goods_name": "蓝月亮洗衣液",
+        "goods_desc": "蓝月亮洗衣液薰衣草亮白增艳洁净衣物护理3kg/瓶装  ",
+        "goods_price": "19.0",
+        "good_image": "lanyueliang.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018006,
+        "cat_name": "生活",
+        "goods_id": "1006006",
+        "goods_name": "多芬沐浴露",
+        "goods_desc": "多芬1000g 沐浴露深层营润滋养美肤沐浴乳保湿 ",
+        "goods_price": "38.0",
+        "good_image": "Dove.jpg",
+        "goods_num": 1
+    },
+    
+    {
+        "cat_id": 2018005,
+        "cat_name": "饮料",
+        "goods_id": "1005002",
+        "goods_name": "安慕希",
+        "goods_desc": "安慕希酸奶原味205g",
+        "goods_price": "9.0",
+        "good_image": "anmuxi.jpg",
+        "goods_num": 1
+    },
+    
+    {
+        "cat_id": 2018005,
+        "cat_name": "饮料",
+        "goods_id": "1005003",
+        "goods_name": "百事可乐",
+        "goods_desc": "冰爽百事可乐330ml",
+        "goods_price": "2.5",
+        "good_image": "baishikele.jpg",
+        "goods_num": 1
+    },
+    
+    {
+        "cat_id": 2018005,
+        "cat_name": "饮料",
+        "goods_id": "1005004",
+        "goods_name": "纯甄酸奶",
+        "goods_desc": "纯甄酸奶200g",
+        "goods_price": "6.5",
+        "good_image": "chunzhen.jpg",
+        "goods_num": 1
+    },
+    
+    {
+        "_id": "5a9514c0a2c7b211982d4324",
+        "cat_id": 2018005,
+        "cat_name": "饮料",
+        "goods_id": "1005005",
+        "goods_name": "金典纯牛奶",
+        "goods_desc": "金典纯牛奶250ml",
+        "goods_price": "7.0",
+        "good_image": "jindian.jpg",
+        "goods_num": 1
+    },
+    
+    {
+        "cat_id": 2018005,
+        "cat_name": "饮料",
+        "goods_id": "1005006",
+        "goods_name": "美年达",
+        "goods_desc": "美年达碳酸饮料330ml",
+        "goods_price": "2.5",
+        "good_image": "meinianda.jpg",
+        "goods_num": 1
+    },
+    
+    {
+        "cat_id": 2018005,
+        "cat_name": "饮料",
+        "goods_id": "1005007",
+        "goods_name": "锐澳鸡尾酒",
+        "goods_desc": "锐澳鸡尾酒",
+        "goods_price": "13.5",
+        "good_image": "ruiao.jpg",
+        "goods_num": 1
+    },
+    
+    {
+        "cat_id": 2018005,
+        "cat_name": "饮料",
+        "goods_id": "1005007",
+        "goods_name": "锐澳鸡尾酒",
+        "goods_desc": "锐澳鸡尾酒",
+        "goods_price": "13.5",
+        "good_image": "ruiao.jpg",
+        "goods_num": 1
+    },
+    
+    {
+        "cat_id": 2018001,
+        "cat_name": "零食",
+        "goods_id": "1001001",
+        "goods_name": "大白兔奶糖",
+        "goods_desc": "大白兔原味奶糖227g/包 原味奶糖 糖 糖果 奶香浓郁",
+        "goods_price": "13.5",
+        "good_image": "dabaitu.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018001,
+        "cat_name": "零食",
+        "goods_id": "1001002",
+        "goods_name": "洽洽瓜子",
+        "goods_desc": "洽洽瓜子香瓜子308克 精选葵花籽 百煮入味 五香味恰恰",
+        "goods_price": "10.5",
+        "good_image": "guazi.jpg",
+        "goods_num": 1
+    },
+    
+    {
+        "cat_id": 2018002,
+        "cat_name": "果蔬",
+        "goods_id": "1002001",
+        "goods_name": "香蕉",
+        "goods_desc": "香蕉500g/3-4根",
+        "goods_price": "5.0",
+        "good_image": "xiangjiao.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018002,
+        "cat_name": "果蔬",
+        "goods_id": "1002002",
+        "goods_name": "青菜",
+        "goods_desc": "新鲜时蔬小白菜500g",
+        "goods_price": "3.0",
+        "good_image": "qingcai.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018002,
+        "cat_name": "果蔬",
+        "goods_id": "1002003",
+        "goods_name": "烟港苹果",
+        "goods_desc": "烟港香甜脆苹果500g",
+        "goods_price": "8.0",
+        "good_image": "apple.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018002,
+        "cat_name": "果蔬",
+        "goods_id": "1002004",
+        "goods_name": "大白菜",
+        "goods_desc": "大白菜500g",
+        "goods_price": "3.0",
+        "good_image": "baicai.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018002,
+        "cat_name": "大青芒",
+        "goods_id": "1002005",
+        "goods_name": "大青芒",
+        "goods_desc": "新鲜大青芒美味品质 500g",
+        "goods_price": "8.0",
+        "good_image": "daqingmang.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018003,
+        "cat_name": "文具",
+        "goods_id": "1003001",
+        "goods_name": "尺子",
+        "goods_desc": "尺子四件套",
+        "goods_price": "3.0",
+        "good_image": "chizi.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018003,
+        "cat_name": "文具",
+        "goods_id": "1003002",
+        "goods_name": "订书机",
+        "goods_desc": "办公专用订书机",
+        "goods_price": "8.0",
+        "good_image": "dingshuji.jpg",
+        "goods_num":1
+    },
+    {
+        "cat_id": 2018003,
+        "cat_name": "文具",
+        "goods_id": "1003003",
+        "goods_name": "笔记本",
+        "goods_desc": "办公专用笔记本",
+        "goods_price": "3.0",
+        "good_image": "note.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018003,
+        "cat_name": "文具",
+        "goods_id": "1003004",
+        "goods_name": "自动铅笔",
+        "goods_desc": "办公专用自动铅笔",
+        "goods_price": "2.3",
+        "good_image": "qianbi.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018003,
+        "cat_name": "文具",
+        "goods_id": "1003005",
+        "goods_name": "水性笔",
+        "goods_desc": "办公专用水性笔",
+        "goods_price": "2.5",
+        "good_image": "shuixingbi.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018003,
+        "cat_name": "文具",
+        "goods_id": "1003006",
+        "goods_name": "橡皮擦",
+        "goods_desc": "办公专用橡皮擦",
+        "goods_price": "0.5",
+        "good_image": "xiangpi.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018004,
+        "cat_name": "糕点",
+        "goods_id": "1005001",
+        "goods_name": "豆沙土司",
+        "goods_desc": "现做大袋豆沙土司",
+        "goods_price": "5.5",
+        "good_image": "doushatusi.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018004,
+        "cat_name": "糕点",
+        "goods_id": "1005002",
+        "goods_name": "蓝莓蛋糕",
+        "goods_desc": "现做蓝莓蛋糕6寸",
+        "goods_price": "20.0",
+        "good_image": "lanmei.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018004,
+        "cat_name": "糕点",
+        "goods_id": "1005003",
+        "goods_name": "榴莲千层蛋糕",
+        "goods_desc": "现做榴莲千层蛋糕",
+        "goods_price": "13.0",
+        "good_image": "liulian.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018005,
+        "cat_name": "糕点",
+        "goods_id": "1005004",
+        "goods_name": "曲奇饼干",
+        "goods_desc": "现做曲奇饼干160g",
+        "goods_price": "9.0",
+        "good_image": "quqi.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018005,
+        "cat_name": "糕点",
+        "goods_id": "1005005",
+        "goods_name": "肉松蛋糕",
+        "goods_desc": "现做肉松蛋糕",
+        "goods_price": "5.0",
+        "good_image": "rousongdangao.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018005,
+        "cat_name": "糕点",
+        "goods_id": "1005006",
+        "goods_name": "三明治",
+        "goods_desc": "现做三明治",
+        "goods_price": "5.0",
+        "good_image": "sanmingzhi.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018005,
+        "cat_name": "糕点",
+        "goods_id": "1005007",
+        "goods_name": "甜甜圈",
+        "goods_desc": "现做甜甜圈",
+        "goods_price": "3.0",
+        "good_image": "tiantianquan.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018005,
+        "cat_name": "糕点",
+        "goods_id": "1005008",
+        "goods_name": "披萨",
+        "goods_desc": "现做披萨",
+        "goods_price": "5.0",
+        "good_image": "pisa.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018007,
+        "cat_name": "进口",
+        "goods_id": "1007001",
+        "goods_name": "夹心蛋卷",
+        "goods_desc": "印尼进口丽芝士Richeese芝心棒奶酪夹心卷180g",
+        "goods_price": "10.0",
+        "good_image": "jiaxindanjuan.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018007,
+        "cat_name": "进口",
+        "goods_id": "1007002",
+        "goods_name": "开心果",
+        "goods_desc": "三只松鼠 开心果225g休闲零食坚果炒货干果无漂白孕妇非散装原味",
+        "goods_price": "39.0",
+        "good_image": "kaixinguo.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018007,
+        "cat_name": "进口",
+        "goods_id": "1007003",
+        "goods_name": "蓝莓干",
+        "goods_desc": "美国进口Nestor乐事多蓝莓干100g果干蜜饯烘焙原料",
+        "goods_price": "20.0",
+        "good_image": "lanmeigan.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018007,
+        "cat_name": "进口",
+        "goods_id": "1007004",
+        "goods_name": "LycheeJelly进口果冻",
+        "goods_desc": "马来西亚进口果冻可康牌布丁多口味118g*3杯含椰果零食",
+        "goods_price": "5.0",
+        "good_image": "LycheeJelly.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018007,
+        "cat_name": "进口",
+        "goods_id": "1007005",
+        "goods_name": "雀巢milo美禄热可可巧克力粉",
+        "goods_desc": "澳大利亚原装进口雀巢milo美禄热可可巧克力粉冲饮1000g罐装烘培",
+        "goods_price": "88.0",
+        "good_image": "milo.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018007,
+        "cat_name": "进口",
+        "goods_id": "1007006",
+        "goods_name": "paido",
+        "goods_desc": "葩朵薯脆（蜂蜜黄油味）70g 进口休闲膨化零食 酥脆美味 休闲旅行聚会零食",
+        "goods_price": "11.0",
+        "good_image": "paido.jpg",
+        "goods_num": 1
+    },
+    {
+        "cat_id": 2018007,
+        "cat_name": "进口",
+        "goods_id": "1007007",
+        "goods_name": "进口青豆",
+        "goods_desc": "泰逗 青豆 原味 160g 青豌豆 泰逗出品 泰国原装进口 营养丰富 香脆",
+        "goods_price": "19.0",
+        "good_image": "qingdou.jpg",
+        "goods_num": 1
+    }
+]
