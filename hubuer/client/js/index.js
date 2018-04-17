@@ -15,14 +15,28 @@ $(".exit").click(function(){
 	window.localStorage.clear();
 })
 
-
+//显示商品数量
+showLength()
+function showLength(){
+	$.ajax({
+		type:"get",
+		url:"http://localhost:3000/users/cartList?userId="+window.localStorage.userId,
+		success: function(response) {
+			response =JSON.parse(response).result;
+//			console.log(response);
+			var html = `(<em>${response.length}</em>)`;
+			$("#cart_num").html(html)
+			$("#cart_num em").css("color","red")
+		}
+	})
+}
 //请求分类名称
 $.ajax({
 	type: "get",
 	url: "http://localhost:3000/cats",
 	success: function(response) {
 		response =JSON.parse(response).data;
-		console.log(response);
+//		console.log(response);
 		var html="";
 		for(let i = 0; i < response.length; i++) {
 			html+=`
@@ -34,7 +48,6 @@ $.ajax({
 			e.preventDefault();
    			var catId=$(this).attr("cat_id");
    			getCartGoods(catId);
-			console.log(catId)//没毛病可以打印数据
 		})
 	}
 });
@@ -46,7 +59,7 @@ function getCartGoods(catId){
 		url: "http://localhost:3000/goods/cat_goods?cat_id="+catId,
 		success: function(response) {
 			response =JSON.parse(response).data;
-			console.log(response);
+//			console.log(response);
 			var html="";
 			for(let i = 0; i < response.length; i++) {
 				html+=`
@@ -66,6 +79,13 @@ function getCartGoods(catId){
 					`
 			}
 			$(".goods_list").html(html);
+			$(".btn").click(function(e){
+				e.preventDefault();
+	   			var goodsId=$(this).attr("goods_id");
+				//调用加入购物车函数
+				addCart(window.localStorage.userId,goodsId);
+				showLength();
+			})
 		}
 		
 	});
@@ -78,7 +98,7 @@ $.ajax({
 	url: "http://localhost:3000/goods",
 	success: function(response) {
 		response =JSON.parse(response).data;
-		console.log(response);
+//		console.log(response);
 		var html="";
 		for(let i = 0; i < response.length; i++) {
 			html+=`
@@ -101,13 +121,33 @@ $.ajax({
 		$(".btn").click(function(e){
 			e.preventDefault();
    			var goodsId=$(this).attr("goods_id");
-			console.log(goodsId)//没毛病可以打印数据
 			
 			//调用加入购物车函数
+			addCart(window.localStorage.userId,goodsId);
+			showLength();
 		})
 	}
 });
 
+//加入购物车
+function addCart(userId,goods_id){
+	var msg = "";
+	$.ajax({
+		type:"post",
+		url:"http://localhost:3000/users/addCart",
+		data:{
+			"userId":userId,
+			"goods_id":goods_id
+		},
+		success:function(response){
+			response = JSON.parse(response)
+//			console.log(response)
+			msg = response.result;
+			alert(msg)
+		}
+	})
+	
+}
 //定时器调用时间函数
 setInterval(getTime,1000);
 
@@ -180,7 +220,6 @@ $(".usernameRegister").blur(function(){
 			}else{
 				$("#testResult").css("color","red");
 			}
-			console.log(response);
 		}
 		
 	});
@@ -209,7 +248,7 @@ var passwordFlag = false;
 $('.second').blur(function(){
 	var password1=$(".first").val();
 	var password2=$(this).val();
-	console.log(password1,password2)
+//	console.log(password1,password2)
 	if(password1 !== password2){
 		$("#testpassword").html("两次密码不一样")
 	}else{
@@ -231,7 +270,7 @@ $("#Txtidcode").change(function() {
 })
 //验证码提示
 $(".icode").blur(function(){
-	console.log(icode)
+//	console.log(icode)
 	if(icode){
 		$(".error1").html("")
 	}else{
@@ -246,7 +285,7 @@ $("#register").click(function(){
 	console.log("准备注册");
 	var userId = $(".usernameRegister").val();
 	var password = $(".first").val();
-	console.log(userId,password)
+//	console.log(userId,password)
 	if(icode && passwordFlag){
 		console.log("密码一致且验证码正确");
 		register(userId,password);
@@ -269,7 +308,6 @@ function register(userId,password){
 		},
 		success: function(response) {
 			response =JSON.parse(response);
-			console.log(response);
 			if(response.msg =="注册成功！"){
 				alert(response.msg + "去登录吧！");
 				$(".register").css("display","none");
@@ -286,7 +324,6 @@ $("#login").click(function(){
 function login(){
 	var username = $(".username").val();
 	var password = $(".password").val();
-	console.log(username,password)
 
 	$.ajax({
 		type: "post",
@@ -297,7 +334,6 @@ function login(){
 		},
 		success: function(response) {
 			response =JSON.parse(response);
-			console.log(response);
 			//显示登录结果信息
 			if(response.message == '登录成功!'){
 				$("#msg").css("color","green");
@@ -318,7 +354,6 @@ function login(){
 			$("#msg").html(msg);
 			localStorage.setItem("userId",response.result.userId);
 			localStorage.setItem("token",response.token);
-			console.log(localStorage);
 
 			
 		}

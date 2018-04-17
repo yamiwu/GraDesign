@@ -42,7 +42,7 @@ $(".closeRegister").click(function(){
 
 //注册窗口 检测学号是否存在
 $(".usernameRegister").blur(function(){
-	console.log("检测学号是否可用");
+//	console.log("检测学号是否可用");
 	var userId = $(".usernameRegister").val();
 //	console.log(userId)
 	$.ajax({
@@ -59,7 +59,6 @@ $(".usernameRegister").blur(function(){
 			}else{
 				$("#testResult").css("color","red");
 			}
-			console.log(response);
 		}
 		
 	});
@@ -88,7 +87,6 @@ var passwordFlag = false;
 $('.second').blur(function(){
 	var password1=$(".first").val();
 	var password2=$(this).val();
-	console.log(password1,password2)
 	if(password1 !== password2){
 		$("#testpassword").html("两次密码不一样")
 	}else{
@@ -110,7 +108,6 @@ $("#Txtidcode").change(function() {
 })
 //验证码提示
 $(".icode").blur(function(){
-	console.log(icode)
 	if(icode){
 		$(".error1").html("")
 	}else{
@@ -146,7 +143,6 @@ function register(userId,password){
 		},
 		success: function(response) {
 			response =JSON.parse(response);
-			console.log(response);
 			if(response.msg =="注册成功！"){
 				alert(response.msg + "去登录吧！");
 				$(".register").css("display","none");
@@ -155,15 +151,29 @@ function register(userId,password){
 		}
 	});
 }
+//显示商品数量
+showLength()
+function showLength(){
+	$.ajax({
+		type:"get",
+		url:"http://localhost:3000/users/cartList?userId="+window.localStorage.userId,
+		success: function(response) {
+			response =JSON.parse(response).result;
+			var html = `(<em>${response.length}</em>)`;
+			$("#cart_num").html(html)
+			$("#cart_num em").css("color","red")
+		}
+	})
+}
 
 $("#login").click(function(){
 	login();
+	showCart();
 })
 //登录函数
 function login(){
 	var username = $(".username").val();
 	var password = $(".password").val();
-	console.log(username,password)
 
 	$.ajax({
 		type: "post",
@@ -174,7 +184,7 @@ function login(){
 		},
 		success: function(response) {
 			response =JSON.parse(response);
-			console.log(response);
+//			console.log(response);
 			//显示登录结果信息
 			if(response.message == '登录成功!'){
 				$("#msg").css("color","green");
@@ -203,21 +213,30 @@ function login(){
 }
 
 //查看购物车
-showCart();
+if(window.localStorage.userId){
+	showCart();
+	showLength()
+}else{
+	$(".goods_List").html("你还没有登录哟! 先去登录吧~");
+	$(".goods_List").css("font-size","2rem");
+	$(".goods_List").css("color","#1e6f46");
+	$(".goods_List").css("margin","9% 15%");
+}
 //查看购物车函数
 function showCart(){
-	console.log(window.localStorage.userId);
+//	console.log(window.localStorage.userId);
 	$.ajax({
 		type:"get",
 		url:"http://localhost:3000/users/cartList?userId="+window.localStorage.userId,
 		success: function(response) {
 			response =JSON.parse(response).result;
-			console.log(response);
+			var allMount = 0;
 			var html="";
 			for(var i=0;i<response.length;i++){
+				allMount+=response[i].goods_price*response[i].goods_num;
 				html+=`
 					<ul>
-						<li><input type="checkbox" name="" id="" value="" /></li>
+						<li></li>
 						<li>
 							<img src="../img/product/${response[i].good_image}" title="${response[i].goods_desc}" />	
 						</li>
@@ -225,14 +244,73 @@ function showCart(){
 							<span >${response[i].goods_name} </span>
 						</li>
 						<li>￥<em>${response[i].goods_price}</em></li>
-						<li><input type="number" min="1" name="" id="" value="${response[i].goods_num}" /></li>
-						<li>￥<em>520</em></li>
-						<li><input type="button" name="" id="delete" value="删除" /></li>
+						<li><input type="number" min="1" name="" class="num" goods_id="${response[i].goods_id}" value="${response[i].goods_num}"/></li>
+						<li>￥<em>${response[i].goods_price*response[i].goods_num}</em></li>
+						<li goods_id="${response[i].goods_id}" class="delete">
+							<input type="button" name=""  value="删除" />
+						</li>
 					</ul>
 				`;
 			}
+			
+			//显示购物车商品件数
+			var allNumber = response.length;
+		    $(".itemNum").html(allNumber);
 			$(".goods_List").html(html)
 			
+			//显示购物车商品总金额
+		    $(".itemMount").html(allMount);
+//			console.log(allMount);
+			$(".goods_List").html(html)
+			
+			//删除商品
+			$(".delete").click(function(){
+				alert("确定删除该商品?")
+				var goodsId=$(this).attr("goods_id");
+//				console.log(goodsId);
+				remove(window.localStorage.userId,goodsId);
+				showCart();
+			})
+			
+			//改变数量
+			$(".num").blur(function(){
+				console.log("准备改变数量")
+				var goodsId=$(this).attr("goods_id");
+				var goodsNum=$(this).val();
+				console.log(goodsId,goodsNum);
+				fixNum(window.localStorage.userId,goodsId,goodsNum);
+				showCart();
+			})
 		}
 	})
+}
+
+function fixNum(userId,goodsId,goodsNum){
+	$.ajax({
+		type:"post",
+		url:"http://localhost:3000/users/addCart",
+		data:{
+			"userId":userId,
+			"goods_id":goodsId,
+			"goods_num":goodsNum
+		},
+		success:function(response){
+			response = JSON.parse(response)
+		}
+	})
+}
+
+function remove(userId,goodsId){
+	$.ajax({
+		type:"post",
+		url:"http://localhost:3000/users/removeGoods",
+		data:{
+			"userId":userId,
+			"goods_id":goodsId
+		},
+		success:function(response){
+			response = JSON.parse(response)
+		}
+	})
+	showLength()
 }

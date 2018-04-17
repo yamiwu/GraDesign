@@ -11,30 +11,26 @@
 }
 .shopBox .goodsUl{
     list-style: none;
-    /*border: 1px solid black;*/
     width: 100%;
-    /*display: -webkit-box;*/
     background: #9e9e9e26;
     height: 4rem;
     margin: 0 auto;
 }
 .shopBox .goodsUl li{
     float: left;
-    width: 19%;
-    height: 4rem;
-    line-height: 4rem;
-    text-align: center;
-    margin-left: -3rem;
+    height: 20px;
+    line-height: 35px;
+    margin: 1% 6%;
 }
+
 .shopBox .goodsUl li:first-child{
-	margin-left: 0.1rem;
-	/*-webkit-box-flex:1;*/
+    margin-left: 16%;
+}
+.shopBox .goodsUl li:first-child em{
+	margin-left: -150%;
 }
 .goods_List{
-    /*border: 1px solid red;*/
     width: 100%;
-    /*background: goldenrod;*/
-    /*height: 12rem;*/
     margin: 0 auto;
 }
 .goods_List ul{
@@ -60,14 +56,13 @@
    
 }
 .goods_List ul li:nth-child(3){
-    /*margin-left: 2%;*/
-    width: 27%;
+    width: 26%;
 }
 .goods_List ul li:nth-child(3) span{
 	width: 33%;
     height: 100%;
-    /*overflow: hidden;*/
     display: -webkit-box;
+     /*overflow: hidden;*/
     /*-webkit-box-orient: vertical;*/
     /*-webkit-line-clamp: 1;*/
 }
@@ -127,7 +122,7 @@
 .order .orderUl li{
     float: left;
     /*width: 16%;*/
-    margin: 0 4%;
+    margin: 0 6%;
     height: 7rem;
     line-height: 7rem;
     text-align: center;
@@ -138,15 +133,12 @@
 .shopBox .orderUl li a{
 	color:#000000;
 }
-.shopBox .orderUl li:nth-child(1){
-    margin-left:5%;
-}
 .shopBox .orderUl li:last-child{
     background: #1e6f46;
     width: 9%;
     height: 61%;
     line-height: 276%;
-    margin-top: 2%;
+    margin-top: 1.5%;
 }
 .shopBox .orderUl li b{
     font-size: 1.8rem;
@@ -160,9 +152,31 @@
 .shopBox .orderUl li a:hover{
 	color:red;
 }
-/*.shopBox .orderUl li:last-child a:hover{
-	color:white;
-}*/
+/*遮罩层*/
+.orderUl li:nth-child(4){
+	position: relative;
+}
+.orderUl li:nth-child(4)>.zhezhao{
+	display: none;
+	position:fixed;
+	width: 100%;
+	height: 100%;
+	top: 0;
+    left: 0;
+    background:rgba(0, 0, 0, 0.5);
+	z-index: 66;
+}
+.orderUl li:nth-child(4)>.orderBox {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    width: 40%;
+    z-index: 99;
+    background: #fff;
+    color: #000;
+    font-size: 1.2rem;
+}	
 
 
 /*媒体查询*/

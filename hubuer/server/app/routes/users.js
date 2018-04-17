@@ -183,7 +183,6 @@ router.post('/addCart',function(req,res,next){
   var goodsId = req.body.goods_id;
   var goodsNum = req.body.goods_num;
 //console.log(req.body)
-  var good_image="";
   Goods.findOne({ 'goods_id': goodsId }, function (err, goodDoc) {
   	good_image = goodDoc.good_image;
   })
@@ -197,13 +196,18 @@ router.post('/addCart',function(req,res,next){
       if(item && (item.goods_id == goodsId)){
       	  goodsItem.good_image=item.good_image
           goodsItem = item;
-          if(goodsNum == 1){
-          	item.goods_num++;
-          }else if(goodsNum == (-1)){
-          	item.goods_num--;
+          if(goodsNum){
+          	  if(goodsNum == 0){
+	          	item.goods_num=1;
+	          }else if(goodsNum == (-1)){
+	          	item.goods_num--;
+	          }else{
+	          	item.goods_num = goodsNum;
+	          }
           }else{
-          	item.goods_num = goodsNum;
+          	item.goods_num++;
           }
+          
       }
     })
 
@@ -224,7 +228,6 @@ router.post('/addCart',function(req,res,next){
     }else{
       Goods.findOne({ 'goods_id': goodsId }, function (err, goodsDoc) {
 //      goodsDoc.checked = 1;
-//      console.log(goodsDoc.checked);//=>1
         console.log(goodsDoc); //=> 没有checked属性
         userDoc.cartList.push(goodsDoc);
         userDoc.save(function (err3, doc3) {
@@ -284,6 +287,53 @@ router.post('/removeGoods',function(req,res,next){
   })
 
 })
-	
+
+
+//添加取货信息 姓名、电话、取货号
+router.post('/addInfo',function(req,res,next){
+  res.writeHead(200, {
+    "Access-Control-Allow-Origin": "*"
+  });
+  
+  let info = req.body;
+  var newInfo = {
+  	"infoName":info.infoName,
+  	"infoTel":info.infoTel
+  }
+  User.findOne({userId:info.userId},function(err,userDoc){
+  	
+		userDoc.userInfo.push(newInfo);
+        userDoc.save(function (err3, doc3) {
+          if(err3) throw err3;
+          res.write(JSON.stringify({
+	           status: '0',
+	           msg: '添加用户信息成功！',
+	           data:doc3.userInfo
+	        })
+          )
+          res.end();
+        })
+  })
+  
+})
+
+//查看用户信息
+router.get('/getInfo',function(req,res,next){
+  res.writeHead(200, {
+    "Access-Control-Allow-Origin": "*"
+  });
+  var userId = req.query.userId
+  User.findOne({userId:userId},function(err,userDoc){
+    if(err) throw err;
+    res.write(JSON.stringify({
+		    status: '0',
+		    msg: '查看用户信息成功！',
+		    data:userDoc.userInfo
+		})
+    )
+    res.end();
+  })
+  
+})
 //路由端口监听
 module.exports = router;

@@ -8,7 +8,6 @@ module.exports = mongoose.model('User',new Schema({
   "phone":Number,
   "userId":Number,
   "orderList":String,
-  "userInfo":String,
   "cartList":[{
 		"cat_id": Number,
     "cat_name": String,
@@ -17,9 +16,9 @@ module.exports = mongoose.model('User',new Schema({
     "goods_desc":String,
     "goods_price": String,
     "good_image": String,
-    "goods_num": Number
-//  "checked":Number
-  }]
+    "goods_num": Number,
+    "checked":Number
+  }],
 
 //"orderList":[{
 //	"orderId":Number,
@@ -39,8 +38,9 @@ module.exports = mongoose.model('User',new Schema({
 //	  }]
 //}],
 //
-//"userInfo":[{
-//	"infoName":String,
-//	"infoTel":Number
-//}]
+"userInfo":[{
+	"infoName":String,
+	"infoTel":Number
+}]
+
 }));

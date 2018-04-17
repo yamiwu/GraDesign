@@ -110,7 +110,7 @@
 		            			<li><a href="javascript:;">用户名</a></li>
 		            			<li><a class="cart-mini " href="">
 					                    <i class="glyphicon glyphicon-shopping-cart"></i> 购物车                   
-					                    <span class="" id="cart_num">(0)</span> 
+					                    <span class="" id="cart_num"></span> 
 				                	</a>
 		            			</li>
 		            			
@@ -148,10 +148,10 @@
 				<div class="shopBox">
 					<h3>我的购物车</h3>
 					<ul class="goodsUl">
-						<li>
+						<!--<li>
 							<input type="checkbox"  name="checkbox" id="checkbox" value="checked" />
 							<b>全选</b>
-						</li>
+						</li>-->
 						<li><em>商品详情</em></li>
 						<li><em>单价(元)</em></li>
 						<li><em>数量</em></li>
@@ -177,7 +177,7 @@
 							<li><em>￥520</em></li>
 							<li><input type="number" min="1" name="" id="" value="1" /></li>
 							<li><em>520</em></li>
-							<li><input type="button" name="" id="delete" value="删除" /></li>
+							<li><input type="button" name="" class="delete" value="删除" /></li>
 						</ul>-->
 
 					</div>	
@@ -185,14 +185,29 @@
 					<div class="order">
 						<ul class="orderUl">
 							<li>
-								<a href="javascript:;" class="remove">删除所选商品</a>
+								<a href="javascript:;" class="remove">喜欢我就快下单哟~</a>
 							</li>
-							<!--<li><a href="javascript:;">清除失效宝贝</a></li>-->
-							<!--<li><a href="javascript:;">分享给好友</a></li>-->
-							<li>已选商品<b> 0 </b>件</li>
-							<li>运费<em> 6</em> 元</li>
-							<li>合计<b> 1314 </b>元</li>
-							<li><a href="order.html">去结算</a></li>
+							<li>已选商品<b class="itemNum"> 0 </b>件</li>
+							<!--<li>运费<em> 6</em> 元</li>-->
+							<li>合计<b class="itemMount"> 1314 </b>元</li>
+							<li class="order">
+								<a href="javascript:;">下单</a>
+								<div class="zhezhao"></div>
+								<div class="orderBox">
+									<p class="loginTitle">登录</p>
+		            					<button class="close">X</button>
+		            					<span id="msg"></span>
+		            					<p>
+		            						<input type="text" class="username" name="username" placeholder="请输入用户名"/>
+		            					</p>
+									    <p>
+									    	<input type="password" class="password" name="password" placeholder="请输入密码"/>
+									    </p>
+										<p>
+											<input type="button" value="立即登录" id="login"></input>
+										</p>
+								</div>
+							</li>
 						</ul>
 					</div>
 				</div>
