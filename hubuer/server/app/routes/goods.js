@@ -10,17 +10,10 @@ router.get('/',function(req,res){
 	});
     Goods.find({},function(err,result){
         if(err){
-//      	res.writeHead(200, {
-//	            "Access-Control-Allow-Origin": "*"
-//	        });
 	        res.write(JSON.stringify({success:false,msg:"获取所有商品失败！"}))
 	        res.end();
-
         }else{
         	var length = result.length ;
-//      	res.writeHead(200, {
-//	            "Access-Control-Allow-Origin": "*"
-//	        });
 	        res.write(JSON.stringify({
 			        	success:true,
 		        		msg:"获取所有商品成功！",
@@ -44,17 +37,11 @@ router.post('/',function(req,res){
 //	console.log(param);
 	Goods.findOne({"goods_id":param.goods_id},function(err,doc){
 		if(err){
-//		  res.writeHead(200, {
-//	            "Access-Control-Allow-Origin": "*"
-//	     });
 	     res.write(JSON.stringify({"status":"1",msg:err.message}))
 	     res.end();
 
 	    }else{
 	      if(doc){
-//	      	res.writeHead(200, {
-//	            "Access-Control-Allow-Origin": "*"
-//	        });
             res.write(JSON.stringify({"status":'1',msg:'该商品数据库中已存在，无需再添加'}))
         	res.end();
 
@@ -71,9 +58,6 @@ router.post('/',function(req,res){
 	      	})
 	      	good.save(function(err) {
 				if(err) {
-//					res.writeHead(200, {
-//			            "Access-Control-Allow-Origin": "*"
-//			        });
 		            res.write(JSON.stringify({
 			        		success: false,
 							message: "商品入库失败" + err
@@ -82,9 +66,6 @@ router.post('/',function(req,res){
         			res.end();
 
 				}else{
-//					res.writeHead(200, {
-//			            "Access-Control-Allow-Origin": "*"
-//			        });
 		            res.write(JSON.stringify({
 			        		success: true,
 							"status": '0',
@@ -108,11 +89,11 @@ router.post('/',function(req,res){
 
 //获取分类商品
 router.get('/cat_goods',function(req,res){
+	res.writeHead(200, {
+		"Access-Control-Allow-Origin": "*"
+	});
     Goods.find({"cat_id":req.query.cat_id},function(err,result){
         if(err){
-//      	res.writeHead(200, {
-//			    "Access-Control-Allow-Origin": "*"
-//			});
 			res.write(JSON.stringify({
 	        		success:false,
                 	msg:"获取一类商品失败！"
@@ -122,9 +103,6 @@ router.get('/cat_goods',function(req,res){
 
         }else{
         	let number = result.length ;
-//      	res.writeHead(200, {
-//			    "Access-Control-Allow-Origin": "*"
-//			});
         	res.write(JSON.stringify({
 	        		success:true,
 	        		msg:"获取一类商品成功！",

@@ -43,20 +43,27 @@ header .top{
 .top-right{
 	position: relative;
 	width:100%;
-	height:100%;
+	height:20px;
 	float:right;
 }
+
 .top-right ul li{
 	float:left;
-	width: 10%;
+	/*width: 16%;*/
+	margin-left: 5%;
 	height:100%;
 	line-height: 315%;
 	color:#fff;
 }
+
 .top-right ul li:nth-child(4){
-	width:60%;
+	width:30%;
 	float:left;
 	margin-left: 6%;
+}
+.top-right .info li:nth-child(4){
+	width:22%;
+	margin-left: 0;
 }
 .top-right ul li a{
 	display: block;
@@ -64,7 +71,7 @@ header .top{
     text-align: center;
 }
 .top-right ul li input{
-	/*width: 450%;*/
+	width: 100%;
 	height:30px;
 	background-color: #fff;
 	background-image: url(../img/search-btn.jpg);
@@ -73,6 +80,9 @@ header .top{
 	padding-left: 20%;
 	color:#000;
 	border: none;
+}
+.info{
+	display: none;
 }
 /*logo start*/
 .logo{

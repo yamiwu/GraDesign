@@ -221,11 +221,11 @@
     {
         "cat_id": 2018005,
         "cat_name": "饮料",
-        "goods_id": "1005007",
-        "goods_name": "锐澳鸡尾酒",
-        "goods_desc": "锐澳鸡尾酒",
-        "goods_price": "13.5",
-        "good_image": "ruiao.jpg",
+        "goods_id": "1005008",
+        "goods_name": "脉动运动饮料",
+        "goods_desc": "脉动 青柠口味 维生素功能 运动饮料",
+        "goods_price": "4.0",
+        "good_image": "maidong.jpg",
         "goods_num": 1
     },
     
@@ -391,7 +391,7 @@
         "goods_num": 1
     },
     {
-        "cat_id": 2018005,
+        "cat_id": 2018004,
         "cat_name": "糕点",
         "goods_id": "1005004",
         "goods_name": "曲奇饼干",
@@ -401,7 +401,7 @@
         "goods_num": 1
     },
     {
-        "cat_id": 2018005,
+        "cat_id": 2018004,
         "cat_name": "糕点",
         "goods_id": "1005005",
         "goods_name": "肉松蛋糕",
@@ -411,7 +411,7 @@
         "goods_num": 1
     },
     {
-        "cat_id": 2018005,
+        "cat_id": 2018004,
         "cat_name": "糕点",
         "goods_id": "1005006",
         "goods_name": "三明治",
@@ -421,7 +421,7 @@
         "goods_num": 1
     },
     {
-        "cat_id": 2018005,
+        "cat_id": 2018004,
         "cat_name": "糕点",
         "goods_id": "1005007",
         "goods_name": "甜甜圈",
@@ -431,7 +431,7 @@
         "goods_num": 1
     },
     {
-        "cat_id": 2018005,
+        "cat_id": 2018004,
         "cat_name": "糕点",
         "goods_id": "1005008",
         "goods_name": "披萨",

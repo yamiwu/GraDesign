@@ -15,127 +15,6 @@ $(".exit").click(function(){
 	window.localStorage.clear();
 })
 
-
-//请求分类名称
-$.ajax({
-	type: "get",
-	url: "http://localhost:3000/cats",
-	success: function(response) {
-		response =JSON.parse(response).data;
-		console.log(response);
-		var html="";
-		for(let i = 0; i < response.length; i++) {
-			html+=`
-				<li class='listBtn' cat_id=${response[i].cat_id}><span>${response[i].cat_name}</span></li>
-			`
-		}
-		$(".Ul").append(html);
-		$(".listBtn").click(function(e){
-			e.preventDefault();
-   			var catId=$(this).attr("cat_id");
-   			getCartGoods(catId);
-			console.log(catId)//没毛病可以打印数据
-		})
-	}
-});
-
-//分类商品请求函数
-function getCartGoods(catId){
-	$.ajax({
-		type: "get",
-		url: "http://localhost:3000/goods/cat_goods?cat_id="+catId,
-		success: function(response) {
-			response =JSON.parse(response).data;
-			console.log(response);
-			var html="";
-			for(let i = 0; i < response.length; i++) {
-				html+=`
-						<li>
-	                        <div class="pic">
-	                            <a href="#"><img src="../img/product/${response[i].good_image}" alt=""></a>
-	                        </div>
-	                        <div class="main">
-	                            <div class="name">${response[i].goods_name}</div>
-	                            <div class="decse">${response[i].goods_desc}</div>
-	                            <div class="price">￥ ${response[i].goods_price}</div>
-	                            <div class="btn-area">
-	                                <a href="javascript:;" class="btn btn--m" goods_id=${response[i].goods_id}><span>加入购物车</span></a>
-	                            </div>
-	                        </div>
-	                    </li>
-					`
-			}
-			$(".goods_list").html(html);
-		}
-		
-	});
-}
-
-
-//商品列表函数
-$.ajax({
-	type: "get",
-	url: "http://localhost:3000/goods",
-	success: function(response) {
-		response =JSON.parse(response).data;
-		console.log(response);
-		var html="";
-		for(let i = 0; i < response.length; i++) {
-			html+=`
-					<li>
-                        <div class="pic">
-                            <a href="#"><img src="../img/product/${response[i].good_image}" alt=""></a>
-                        </div>
-                        <div class="main">
-                            <div class="name">${response[i].goods_name}</div>
-                            <div class="decse">${response[i].goods_desc}</div>
-                            <div class="price">￥ ${response[i].goods_price}</div>
-                            <div class="btn-area">
-                                <a href="javascript:;" class="btn btn--m" goods_id=${response[i].goods_id}><span>加入购物车</span></a>
-                            </div>
-                        </div>
-                    </li>
-				`
-		}
-		$(".goods_list").html(html);
-		$(".btn").click(function(e){
-			e.preventDefault();
-   			var goodsId=$(this).attr("goods_id");
-			console.log(goodsId)//没毛病可以打印数据
-			
-			//调用加入购物车函数
-		})
-	}
-});
-
-//定时器调用时间函数
-setInterval(getTime,1000);
-
-//时间函数
-function getTime(){
-	var hour = new Date().getHours();
-	var min = new Date().getMinutes();
-	var sec = new Date().getSeconds();
-	var time = `
-		<li>
-			<p class="time">${hour}</p>
-			<p> —— </p>
-			<p>HOUR</p>
-		</li>
-		<li>
-			<p class="time">${min}</p>
-			<p> —— </p>
-			<p>MIN</p>
-		</li>
-		<li>
-			<p class="time">${sec}</p>
-			<p> —— </p>
-			<p>SEC</p>
-		</li>
-	`;
-	$(".clockUl").html(time);
-}
-
 $(".nologin li").eq(0).click(function(){
 	console.log("弹出登录窗口")
 	$(".login").css("display","block");
@@ -239,8 +118,6 @@ $(".icode").blur(function(){
 	}
 })
 
-
-
 //注册
 $("#register").click(function(){
 	console.log("准备注册");
@@ -325,25 +202,37 @@ function login(){
 	});
 }
 
-
-
-
-
-
-
-//	var xhr = new XMLHttpRequest();
-//	xhr.onreadystatechange = function(){
-//		if(xhr.readyState == 4){
-//			//接收完文件要做的事情，让h1的内容变为读取的东西
-//			var str = xhr.responseText;
-//			var aa = JSON.parse(str)
-//			console.log(aa.data)
-//		}
-//	}
-//	xhr.open("got","http://localhost:3000/users/login",true);
-//
-//	xhr.send({"userId":username,"password":password});
-
-
-
-
+//查看购物车
+showCart();
+//查看购物车函数
+function showCart(){
+	console.log(window.localStorage.userId);
+	$.ajax({
+		type:"get",
+		url:"http://localhost:3000/users/cartList?userId="+window.localStorage.userId,
+		success: function(response) {
+			response =JSON.parse(response).result;
+			console.log(response);
+			var html="";
+			for(var i=0;i<response.length;i++){
+				html+=`
+					<ul>
+						<li><input type="checkbox" name="" id="" value="" /></li>
+						<li>
+							<img src="../img/product/${response[i].good_image}" title="${response[i].goods_desc}" />	
+						</li>
+						<li>
+							<span >${response[i].goods_name} </span>
+						</li>
+						<li>￥<em>${response[i].goods_price}</em></li>
+						<li><input type="number" min="1" name="" id="" value="${response[i].goods_num}" /></li>
+						<li>￥<em>520</em></li>
+						<li><input type="button" name="" id="delete" value="删除" /></li>
+					</ul>
+				`;
+			}
+			$(".goods_List").html(html)
+			
+		}
+	})
+}
