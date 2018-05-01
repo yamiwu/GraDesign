@@ -13,6 +13,9 @@ $(".exit").click(function(){
 	$(".info").css("display","none");
 	//清空本地存储
 	window.localStorage.clear();
+	$(".goods_List").css("font-size","2rem");
+	$(".goods_List").css("color","#1e6f46");
+	$(".goods_List").css("margin","9% 15%");
 })
 
 $(".nologin li").eq(0).click(function(){
@@ -151,14 +154,16 @@ function register(userId,password){
 		}
 	});
 }
+
 //显示商品数量
 showLength()
 function showLength(){
+	if(!window.localStorage.userId) return ;
 	$.ajax({
 		type:"get",
 		url:"http://localhost:3000/users/cartList?userId="+window.localStorage.userId,
 		success: function(response) {
-			response =JSON.parse(response).result;
+			response =JSON.parse(response).result.cartList;
 			var html = `(<em>${response.length}</em>)`;
 			$("#cart_num").html(html)
 			$("#cart_num em").css("color","red")
@@ -169,6 +174,8 @@ function showLength(){
 $("#login").click(function(){
 	login();
 	showCart();
+	//显示商品数量
+	showLength()
 })
 //登录函数
 function login(){
@@ -222,14 +229,20 @@ if(window.localStorage.userId){
 	$(".goods_List").css("color","#1e6f46");
 	$(".goods_List").css("margin","9% 15%");
 }
+
+
+
 //查看购物车函数
 function showCart(){
+//	if(!window.localStorage.userId) return ;
 //	console.log(window.localStorage.userId);
 	$.ajax({
 		type:"get",
 		url:"http://localhost:3000/users/cartList?userId="+window.localStorage.userId,
 		success: function(response) {
-			response =JSON.parse(response).result;
+			var str =JSON.parse(response)
+			console.log(str)
+			response =JSON.parse(response).result.cartList;
 			var allMount = 0;
 			var html="";
 			for(var i=0;i<response.length;i++){
@@ -313,4 +326,133 @@ function remove(userId,goodsId){
 		}
 	})
 	showLength()
+}
+
+//下单
+$(".order").click(function(e){
+	console.log("打开信息填写窗口");
+	$(".goOrder").css("display","block")
+	return false;
+})
+
+$("#goorder").click(function(){
+	console.log("下单")
+	var infoName = document.getElementsByClassName("infoName")[0].value;
+	var infoTel = document.getElementsByClassName("infoTel")[0].value;
+	var orderTotal = $(".itemNum").html();
+	var orderMount = $(".itemMount").html();
+	console.log(orderTotal,orderMount)
+	goOrder(window.localStorage.userId,infoName,infoTel,orderTotal,orderMount)
+	alert("下单成功！请到我的订单中查看取货信息，1个小时候后即可到超市取货！")
+	$(".goOrder").css("display","none")
+//	console.log(infoName,infoTel)
+	return false;
+})
+$(".closeGoOrder").click(function(){
+	console.log("关闭填写取货信息窗口")
+	$(".goOrder").css("display","none");
+	return false;
+})
+
+function goOrder(userId,infoName,infoTel,orderTotal,orderMount){
+	var goodsArray = [];
+	$.ajax({
+		type:"get",
+		url:"http://localhost:3000/users/cartList?userId="+userId,
+		success:function(res){
+			res = JSON.parse(res).result.cartList
+			console.log(res)
+			
+			for (var i = 0; i < res.length; i++) {
+				let item = {
+					"goods_id":res[i].goods_id
+				}
+				goodsArray.push(item);
+			}
+			
+			console.log(goodsArray)
+				$.ajax({
+					type:"post",
+					url:"http://localhost:3000/users/order",
+					data:{
+						"userId":userId,
+						"infoName":infoName,
+						"infoTel":infoTel,
+						"orderMount":orderMount,
+						"orderTotal":orderTotal,
+						"goods_array":JSON.stringify(goodsArray)
+					},
+					success:function(response){
+						response = JSON.parse(response).data.orderList;
+						console.log(response[response.length-1])
+					}
+				})
+		}
+	})
+}
+//订单、购物车页面切换
+$("#my_cart").click(function(){
+	console.log("点击我的购物车")
+	$("#my_order").css("color","black")
+	$("#my_cart").css("color","red")
+	$(".my_order").css("display","none")
+	$(".my_cart").css("display","block")
+})
+$("#my_order").click(function(){
+	console.log("点击我的订单")
+	$("#my_order").css("color","red")
+	$("#my_cart").css("color","black")
+	$(".my_order").css("display","block")
+	$(".my_cart").css("display","none")
+	showOrderList(window.localStorage.userId)
+})
+
+showOrderList(window.localStorage.userId)
+function showOrderList(userId){
+	if(userId){
+		console.log("订单展示")
+		$.ajax({
+			type:"get",
+			url:"http://localhost:3000/users/getorder?userId="+userId,
+			success:function(response){
+				response = JSON.parse(response).data.orderList
+// 				console.log(response)
+ 				var html="";
+ 				
+ 				for (var i = response.length-1; i >= 0; i--) {
+	 					
+						var inHtml = "";
+	 					for (var j = 0; j < response[i].cartList.length; j++) {
+		 					inHtml+=`
+		 						<ul>
+									<li>商品名称:${response[i].cartList[j].goods_name}</li>
+									<li>商品单价：￥${response[i].cartList[j].goods_price}</li>
+									<li>商品数量：${response[i].cartList[j].goods_num}</li>
+								</ul>
+								<br/>
+		 					`;
+							
+		 					
+		 				}
+	 					html+=`
+	 						<li>
+								<span>取货码：<b>${response[i].orderId}</b></span>
+								<span>取货人姓名：<b>${response[i].infoName}</b></span>
+								<br />
+								<span>电话：<b>${response[i].infoTel}</b></span>
+								<span>商品种类数：<b>${response[i].orderTotal}</b></span>
+								<p>总金额：<b>${response[i].orderMount}</b></p>
+								<div class="goods_list">商品清单：
+									${inHtml}
+								</div>
+							</li>
+	 					`;
+	 					
+	 					
+ 				}
+ 				
+ 				$(".order_list").html(html)
+			}
+		})
+	}
 }

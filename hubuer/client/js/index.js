@@ -1,9 +1,13 @@
+//吸顶组件
+// var scroll = new Scroll('#main-nav')
 //判断是否登录,登录则显示用户学号
 if(window.localStorage.token){
 	$(".nologin").css("display","none");
 	$(".info").css("display","block");
 	var useInfo = `<a href="javascript:;">${window.localStorage.userId}</a>`;
 	$(".info li").eq(0).html(useInfo);
+	//显示商品数量
+	showLength()
 }
 
 //退出登录则还原并清空本地存储
@@ -15,15 +19,14 @@ $(".exit").click(function(){
 	window.localStorage.clear();
 })
 
-//显示商品数量
-showLength()
+
 function showLength(){
 	$.ajax({
 		type:"get",
 		url:"http://localhost:3000/users/cartList?userId="+window.localStorage.userId,
 		success: function(response) {
-			response =JSON.parse(response).result;
-//			console.log(response);
+			response =JSON.parse(response).result.cartList;
+			console.log(response);
 			var html = `(<em>${response.length}</em>)`;
 			$("#cart_num").html(html)
 			$("#cart_num em").css("color","red")

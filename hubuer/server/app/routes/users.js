@@ -121,8 +121,6 @@ router.post('/login',function(req,res){
     //同过用户传递的信息 在mongoDB数据库中查找
     User.findOne({userId:param.userId},function(err,result){
         if(err) throw err;
-        console.log(req)
-        console.log(param)
         if(!result){
         	res.write(JSON.stringify({
 					success:false,
@@ -158,13 +156,12 @@ router.get('/cartList',function(req,res,next){
   let userId = req.query.userId;
   res.writeHead(200, {
     "Access-Control-Allow-Origin": "*"
-  });
-            
+  });        
   User.findOne({userId:userId},function(err,doc){
   	res.write(JSON.stringify({
 			status:0,
 		    msg:'查看购物车成功！',
-		    result:doc.cartList
+		    result:doc//.cartList
 		})
 	)
     res.end();
@@ -182,13 +179,8 @@ router.post('/addCart',function(req,res,next){
   var userId = req.body.userId;
   var goodsId = req.body.goods_id;
   var goodsNum = req.body.goods_num;
-//console.log(req.body)
-  Goods.findOne({ 'goods_id': goodsId }, function (err, goodDoc) {
-  	good_image = goodDoc.good_image;
-  })
   
   User.findOne({userId:userId},function(err,userDoc){
-	console.log(userDoc);
     let goodsItem = '';
     // 当我们添加商品的时候，判断购物车里面有没有这个商品
     userDoc.cartList.forEach(function(item){
@@ -222,13 +214,9 @@ router.post('/addCart',function(req,res,next){
 	        })
         )
         res.end()
-        console.log("我是goodsItem");
-        console.log(goodsItem)
       })
     }else{
       Goods.findOne({ 'goods_id': goodsId }, function (err, goodsDoc) {
-//      goodsDoc.checked = 1;
-        console.log(goodsDoc); //=> 没有checked属性
         userDoc.cartList.push(goodsDoc);
         userDoc.save(function (err3, doc3) {
           if(err3) throw err3;
@@ -240,8 +228,6 @@ router.post('/addCart',function(req,res,next){
 	        })
           )
           res.end()
-          console.log("我是userDoc.cartList");
-          console.log(userDoc.cartList)
         })
       })
     }
@@ -260,15 +246,13 @@ router.post('/removeGoods',function(req,res,next){
   console.log(req.body)
   
   User.findOne({userId:userId},function(err,userDoc){
-  	console.log("item操作前")
-	console.log(userDoc);
     //查找购物车里中的商品
     userDoc.cartList.forEach(function(item){
     	
       if(item && (item.goods_id == goodsId)){
-      	console.log(item)
+//    	console.log(item)
       	userDoc.cartList.remove(item);
-      	console.log(userDoc);
+//    	console.log(userDoc);
       	userDoc.save(function(err3, doc3) {
 			if(err3) throw err3;
 			res.write(JSON.stringify({
@@ -335,5 +319,155 @@ router.get('/getInfo',function(req,res,next){
   })
   
 })
+
+
+//下单
+var orderId = 10000;//返回取货码
+router.post('/order',function(req,res,next){
+  res.writeHead(200, {
+	"Access-Control-Allow-Origin": "*"
+  });	
+  orderId++;
+  var orderNew =req.body;
+  var goodsArray =JSON.parse(req.body.goods_array);
+  console.log(orderNew);
+  console.log(goodsArray);
+  
+  var infoItem ={
+	"orderId":orderId,
+	"infoName":orderNew.infoName,
+	"infoTel":orderNew.infoTel,
+	"orderTotal":orderNew.orderTotal,
+	"orderMount":orderNew.orderMount,
+	"cartList":[]
+  };
+
+  //存入用户订单
+  User.findOne({userId:orderNew.userId},function(err,userDoc){
+//  console.log(userDoc)
+    goodsArray.forEach(function(item){
+    	Goods.findOne({ 'goods_id': item.goods_id}, function (err, goodsDoc) {
+	        infoItem.cartList.push(goodsDoc);
+	    })
+
+    })
+    setTimeout(function(){
+    		//存入管理员订单
+		User.findOne({userId:20180000},function(err,userAdmin){
+			infoItem.check="check";
+			userAdmin.orderList.push(infoItem);
+			userAdmin.save(function (errAdmin, Admin) {
+		    })
+		})
+    },500)
+    
+    //延时器
+    setTimeout(function(){
+    	infoItem.check="check";
+      	userDoc.orderList.push(infoItem);
+		userDoc.save(function (err3, doc3) {
+		    if(err3) throw err3;
+		    res.write(JSON.stringify({
+			        status: '0',
+			        msg: '下单成功',
+			        data:doc3
+			    })
+		    )
+		    res.end()
+		})
+		
+    },500)
+
+ })
+
+})
+
+//查看订单
+router.get('/getorder',function(req,res,next){
+  res.writeHead(200, {
+	"Access-Control-Allow-Origin": "*"
+  });
+  let userId = req.query.userId;
+  User.findOne({userId:userId},function(err,userDoc){
+	if(err) throw err;
+	res.write(JSON.stringify({
+		status: '0',
+	    msg: '查看订单成功',
+	    data:userDoc
+	  })
+	)
+	res.end()
+
+ })
+})
+
+//删除订单
+router.post('/removeOrder',function(req,res,next){
+  res.writeHead(200, {
+	"Access-Control-Allow-Origin": "*"
+  });	
+
+  var userId = req.body.userId;
+  var orderId = req.body.orderId;
+  
+  User.findOne({userId:userId},function(err,userDoc){
+	console.log(userDoc);
+    //查找购物车里中的商品
+    userDoc.orderList.forEach(function(item){
+      if(item && (item.orderId == orderId)){
+      	console.log(item)
+      	userDoc.orderList.remove(item);
+      	userDoc.save(function(err, doc) {
+			if(err) throw err;
+			res.write(JSON.stringify({
+				status: '0',
+				msg:'删除订单成功！',
+				data: doc
+			  })
+			)
+			res.end()
+		})
+      	
+      }
+    })
+  })
+
+})
+
+//标记已取订单
+router.post('/outOrder',function(req,res,next){
+  res.writeHead(200, {
+	"Access-Control-Allow-Origin": "*"
+  });	
+
+  var userId = req.body.userId;
+  var orderId = req.body.orderId;
+  
+  User.findOne({userId:userId},function(err,userDoc){
+//	console.log(userDoc);
+    //查找购物车里中的商品
+    userDoc.orderList.forEach(function(item){
+      if(item && (item.orderId == orderId)){
+      	item.check = "checked";
+//    	userDoc.orderList.remove(item);
+      	userDoc.save(function(err, doc) {
+			if(err) throw err;
+			res.write(JSON.stringify({
+				status: '0',
+				msg:'取货成功！',
+				data: doc
+			  })
+			)
+			res.end()
+		})
+      	
+      }else{
+      	console.log("查无此订单")
+      }
+    })
+  })
+
+})
+
 //路由端口监听
 module.exports = router;

@@ -363,7 +363,7 @@
     {
         "cat_id": 2018004,
         "cat_name": "糕点",
-        "goods_id": "1005001",
+        "goods_id": "1004001",
         "goods_name": "豆沙土司",
         "goods_desc": "现做大袋豆沙土司",
         "goods_price": "5.5",
@@ -373,7 +373,7 @@
     {
         "cat_id": 2018004,
         "cat_name": "糕点",
-        "goods_id": "1005002",
+        "goods_id": "1004002",
         "goods_name": "蓝莓蛋糕",
         "goods_desc": "现做蓝莓蛋糕6寸",
         "goods_price": "20.0",
@@ -383,7 +383,7 @@
     {
         "cat_id": 2018004,
         "cat_name": "糕点",
-        "goods_id": "1005003",
+        "goods_id": "1004003",
         "goods_name": "榴莲千层蛋糕",
         "goods_desc": "现做榴莲千层蛋糕",
         "goods_price": "13.0",
@@ -393,7 +393,7 @@
     {
         "cat_id": 2018004,
         "cat_name": "糕点",
-        "goods_id": "1005004",
+        "goods_id": "1004004",
         "goods_name": "曲奇饼干",
         "goods_desc": "现做曲奇饼干160g",
         "goods_price": "9.0",
@@ -403,7 +403,7 @@
     {
         "cat_id": 2018004,
         "cat_name": "糕点",
-        "goods_id": "1005005",
+        "goods_id": "1004005",
         "goods_name": "肉松蛋糕",
         "goods_desc": "现做肉松蛋糕",
         "goods_price": "5.0",
@@ -413,7 +413,7 @@
     {
         "cat_id": 2018004,
         "cat_name": "糕点",
-        "goods_id": "1005006",
+        "goods_id": "1004006",
         "goods_name": "三明治",
         "goods_desc": "现做三明治",
         "goods_price": "5.0",
@@ -423,7 +423,7 @@
     {
         "cat_id": 2018004,
         "cat_name": "糕点",
-        "goods_id": "1005007",
+        "goods_id": "1004007",
         "goods_name": "甜甜圈",
         "goods_desc": "现做甜甜圈",
         "goods_price": "3.0",
@@ -433,7 +433,7 @@
     {
         "cat_id": 2018004,
         "cat_name": "糕点",
-        "goods_id": "1005008",
+        "goods_id": "1004008",
         "goods_name": "披萨",
         "goods_desc": "现做披萨",
         "goods_price": "5.0",

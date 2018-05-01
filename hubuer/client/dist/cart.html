@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="../css/reset.css"/>
         <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/common.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/product.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/index.css"/>
 		<link rel="stylesheet" type="text/css" href="../css/cart.css"/>
 	</head>
@@ -146,8 +147,9 @@
 			<!--响应式-->
 			<div class="container">
 				<div class="shopBox">
-					<h3>我的购物车</h3>
-					<ul class="goodsUl">
+					<h3><span id="my_cart">我的购物车</span>/<span id="my_order">我的订单</span></h3>
+					<div class="my_cart">
+						<ul class="goodsUl">
 						<!--<li>
 							<input type="checkbox"  name="checkbox" id="checkbox" value="checked" />
 							<b>全选</b>
@@ -180,7 +182,8 @@
 							<li><input type="button" name="" class="delete" value="删除" /></li>
 						</ul>-->
 
-					</div>	
+					</div>
+					
 					<!--结算栏-->
 					<div class="order">
 						<ul class="orderUl">
@@ -207,8 +210,74 @@
 											<input type="button" value="立即登录" id="login"></input>
 										</p>
 								</div>
+								<div class="goOrder">
+									<div class="zhezhao"></div>
+		            				<div class="order">
+		            					<p class="orderTitle">填写取货信息</p>
+		            					<button class="closeGoOrder">X</button>
+		            					<span id="msg"></span>
+		            					<p>
+		            						<input type="text" class="infoName" name="infoName" placeholder="请输入取货人姓名"/>
+		            					</p>
+		            					<p>
+		            						<input type="text" class="infoTel" name="infoTel" placeholder="请输入取货人电话"/>
+		            					</p>
+									    	
+									   
+					                    <div class="error1"></div>
+										<p>
+											<input type="button" value="立即下单" id="goorder"></input>
+										</p>
+		            				</div>
+								</div>
 							</li>
 						</ul>
+					</div>
+				  </div>
+				  <div class="my_order">
+				  	<div class="container-fluid">
+						<div class="accessory-list-wrap">
+			                    <div class="accessory-list col-4">
+			                    	<!--订单盒子-->
+			                       <ul class="order_list">
+										<!--<li>
+											<span>取货码：<b>100001</b></span>
+											<span>取货人姓名：<b>你说什么</b></span>
+											<br />
+											<span>电话：<b>17771412430</b></span>
+											<span>商品种类数：<b>7</b></span>
+											<p>总金额：<b>￥1235</b></p>
+											<div class="goods_list">商品清单：
+												<ul>
+													<li>商品名称:洗发水</li>
+													<li>商品单价：￥123.5</li>
+													<li>商品数量：2</li>
+												</ul>
+												<br/>
+												<ul>
+													<li>商品名称:洗发水</li>
+													<li>商品单价：￥123.5</li>
+													<li>商品数量：2</li>
+												</ul>
+												<br/>
+												<ul>
+													<li>商品名称:洗发水</li>
+													<li>商品单价：￥123.5</li>
+													<li>商品数量：2</li>
+												</ul>
+												<br/>
+												<ul>
+													<li>商品名称:洗发水</li>
+													<li>商品单价：￥123.5</li>
+													<li>商品数量：2</li>
+												</ul>
+											</div>
+										</li>-->
+									</ul>
+			                    </div>
+			                </div>
+					</div>
+						
 					</div>
 				</div>
 				

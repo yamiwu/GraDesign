@@ -7,7 +7,6 @@ module.exports = mongoose.model('User',new Schema({
   "password": String,
   "phone":Number,
   "userId":Number,
-  "orderList":String,
   "cartList":[{
 		"cat_id": Number,
     "cat_name": String,
@@ -16,28 +15,27 @@ module.exports = mongoose.model('User',new Schema({
     "goods_desc":String,
     "goods_price": String,
     "good_image": String,
-    "goods_num": Number,
-    "checked":Number
+    "goods_num": Number
   }],
+"orderList":[{
+	"orderId":Number,
+	"infoName":String,
+	"infoTel":Number,
+	"orderTotal":Number,
+	"orderMount":String,
+	"check":String,
+	"cartList":[{
+			"cat_id": Number,
+      "cat_name": String,
+		  "goods_id":String,
+	    "goods_name": String,
+	    "goods_desc":String,
+	    "goods_price": String,
+	    "good_image": String,
+	    "goods_num": Number
+	}]
+}],
 
-//"orderList":[{
-//	"orderId":Number,
-//	"orderName":String,
-//	"orderTotal":Number,
-//	"tel":Number,
-//	"cartList":[{
-//			"cat_id": Number,
-//    "cat_name": String,
-//		  "goods_id":String,
-//	    "goods_name": String,
-//	    "goods_desc":String,
-//	    "goods_price": String,
-//	    "goods_image": String,
-//	    "goods_num": Number,
-//	    "checked":Number
-//	  }]
-//}],
-//
 "userInfo":[{
 	"infoName":String,
 	"infoTel":Number
